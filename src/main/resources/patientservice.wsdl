@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Generated 06/24/19 by Microsoft SOAP Toolkit WSDL File Generator, Version 3.00.1325.0--><definitions name="patientservice" targetNamespace="http://tempuri.org/patientservice/wsdl/" xmlns:wsdlns="http://tempuri.org/patientservice/wsdl/" xmlns:typens="http://tempuri.org/patientservice/type/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:stk="http://schemas.microsoft.com/soap-toolkit/wsdl-extension" xmlns:dime="http://schemas.xmlsoap.org/ws/2002/04/dime/wsdl/" xmlns:ref="http://schemas.xmlsoap.org/ws/2002/04/reference/" xmlns:content="http://schemas.xmlsoap.org/ws/2002/04/content-type/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <schema targetNamespace="http://tempuri.org/patientservice/type/" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/">
+      <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+      <import namespace="http://schemas.xmlsoap.org/wsdl/"/>
+      <import namespace="http://schemas.xmlsoap.org/ws/2002/04/reference/"/>
+      <import namespace="http://schemas.xmlsoap.org/ws/2002/04/content-type/"/>
+    </schema>
+  </types>
+
+  <message name="patientservice.Get_staff_fulldetail">
+    <part name="sCode" type="xsd:string"/>
+  </message>
+  <message name="patientservice.Get_staff_fulldetailResponse">
+    <part name="Result" type="xsd:string"/>
+  </message>
+  <message name="patientservice.Get_staff_detail">
+    <part name="user_id" type="xsd:string"/>
+    <part name="password_id" type="xsd:string"/>
+  </message>
+  <message name="patientservice.Get_staff_detailResponse">
+    <part name="Result" type="xsd:string"/>
+  </message>
+
+
+  <portType name="patientserviceSoapPort">
+
+    <operation name="Get_staff_detail" parameterOrder="user_id password_id">
+      <input message="wsdlns:patientservice.Get_staff_detail"/>
+      <output message="wsdlns:patientservice.Get_staff_detailResponse"/>
+    </operation>
+    <operation name="Get_staff_fulldetail" parameterOrder="sCode">
+      <input message="wsdlns:patientservice.Get_staff_fulldetail"/>
+      <output message="wsdlns:patientservice.Get_staff_fulldetailResponse"/>
+    </operation>
+
+  </portType>
+  <binding name="patientserviceSoapBinding" type="wsdlns:patientserviceSoapPort">
+    <stk:binding preferredEncoding="UTF-8"/>
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+    <operation name="Get_staff_fulldetail">
+      <soap:operation soapAction="http://tempuri.org/patientservice/action/patientservice.Get_staff_fulldetail"/>
+      <input>
+        <soap:body use="encoded" namespace="http://tempuri.org/patientservice/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="sCode"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://tempuri.org/patientservice/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="Result"/>
+      </output>
+    </operation>
+
+    <operation name="Get_staff_detail">
+      <soap:operation soapAction="http://tempuri.org/patientservice/action/patientservice.Get_staff_detail"/>
+      <input>
+        <soap:body use="encoded" namespace="http://tempuri.org/patientservice/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="user_id password_id"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://tempuri.org/patientservice/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="Result"/>
+      </output>
+    </operation>
+
+
+  </binding>
+  <service name="patientservice">
+    <port name="patientserviceSoapPort" binding="wsdlns:patientserviceSoapBinding">
+      <soap:address location="http://TESTFOXWS1/webservice/patientservice.WSDL"/>
+    </port>
+  </service>
+</definitions>

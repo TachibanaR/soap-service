@@ -1,0 +1,30 @@
+spring:
+  profiles:
+    active: local
+
+  jmx:
+    enabled: false
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+
+server:
+  port: 8083
+
+
+---
+
+
+spring:
+  profiles: local
+
+application:
+  login:
+    activeDirectory:
+      host: localhost:8083
+
+  notification:
+    firebase:
+      active: false
+

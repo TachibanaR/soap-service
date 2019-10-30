@@ -1,0 +1,55 @@
+<xsd:schema
+        targetNamespace="http://tempuri.org/patientservice/type/"
+        xmlns="http://schemas.xmlsoap.org/wsdl/"
+        xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+        xmlns:wsdlns="http://tempuri.org/patientservice/wsdl/"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+        xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+        xmlns:typens="http://tempuri.org/patientservice/type/"
+        xmlns:stk="http://schemas.microsoft.com/soap-toolkit/wsdl-extension"
+        xmlns:dime="http://schemas.xmlsoap.org/ws/2002/04/dime/wsdl/"
+        xmlns:ref="http://schemas.xmlsoap.org/ws/2002/04/reference/"
+        xmlns:content="http://schemas.xmlsoap.org/ws/2002/04/content-type/"
+        elementFormDefault="qualified">
+
+    <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+    <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/" />
+    <xsd:import namespace="http://schemas.xmlsoap.org/ws/2002/04/reference/" />
+    <xsd:import namespace="http://schemas.xmlsoap.org/ws/2002/04/content-type/" />
+
+    <message name="patientservice.Get_staff_detail">
+        <part name="user_id" type="xsd:string" />
+        <part name="password_id" type="xsd:string" />
+    </message>
+    <message name="patientservice.Get_staff_detailResponse">
+        <part name="Result" type="xsd:string" />
+    </message>
+
+    <portType name="patientserviceSoapPort">
+        <operation name="Get_staff_detail" parameterOrder="user_id password_id">
+            <input message="wsdlns:patientservice.Get_staff_detail" />
+            <output message="wsdlns:patientservice.Get_staff_detailResponse" />
+        </operation>
+    </portType>
+
+    <binding name="patientserviceSoapBinding" type="wsdlns:patientserviceSoapPort">
+        <operation name="Get_staff_detail">
+            <soap:operation soapAction="http://tempuri.org/patientservice/action/patientservice.Get_staff_detail" />
+            <input>
+                <soap:body
+                        use="encoded"
+                        namespace="http://tempuri.org/patientservice/message/"
+                        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                        parts="user_id password_id" />
+            </input>
+            <output>
+                <soap:body
+                        use="encoded"
+                        namespace="http://tempuri.org/patientservice/message/"
+                        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                        parts="Result" />
+            </output>
+        </operation>
+    </binding>
+</xsd:schema>
